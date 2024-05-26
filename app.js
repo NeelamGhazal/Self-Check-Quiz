@@ -1,8 +1,9 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
-console.log(chalk.blueBright("-".repeat(100)));
+console.log(chalk.magentaBright.bold("-".repeat(100)));
 console.log(chalk.bgMagentaBright.bold("\t\t\t <<<<<<<<<< Welcome to Self-Check Quiz >>>>>>>>>>"));
-console.log(chalk.blueBright("-".repeat(100)));
+console.log(chalk.magentaBright.bold("-".repeat(100)));
 // Define the questions
 const questions = [
     {
@@ -63,7 +64,7 @@ async function main() {
             score += 10;
         }
         else {
-            console.log(chalk.red("Sorry, that's not correct."));
+            console.log(chalk.red(`Sorry, that's not correct. The correct answer is ${chalk.greenBright(correctAnswers[questionName])}`));
         }
     }
     for (const question of questions) {
@@ -72,6 +73,9 @@ async function main() {
         console.log(chalk.blueBright("-".repeat(100)));
     }
     // Display the total score
-    console.log(chalk.bgBlue(`Your total score is: ${score}`));
+    console.log(chalk.greenBright.bold(`
+   --------------------------
+    Your total score is: ${chalk.cyanBright(score)}
+   --------------------------`));
 }
 main();
